@@ -6,21 +6,18 @@ function TodoList({toDo, onCompletion, onEdit, onDeletion}) {
     }
   return (
     <>
-        {toDo.map((todo) => {
-            return (
-              <TodoItem 
-                key={todo.id} 
-                todo={todo} 
-                onEdit={onEdit}
-                // Pass the action handlers down here:
-                // onCompletion={onCompletion}
-                // onEdit={onEdit}
-                // onDeletion={onDeletion}
-              />
-            );
-        })}
+      {toDo.map((todo) => {
+          return (
+            <TodoItem 
+              key={todo.id} 
+              todo={todo} 
+              onEdit={onEdit}
+              onCompletion={onCompletion}
+              onDeletion={onDeletion}
+            />
+          );
+      })}
     </>
   )
 }
-
 export default TodoList

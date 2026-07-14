@@ -14,11 +14,14 @@ function TodoForm({onAddToDO}) {
   return (
     <>
         <form onSubmit={handleSubmit}>
-            <input type="text" placeholder='Add a Task' value={input} onChange={(e) => {setInput(e.target.value)}}/>
-            <button type="submit" > Add Task</button>
+            <input 
+                type="text" 
+                placeholder='Add a Task' 
+                value={input} 
+                onChange={(e) => {setInput(e.target.value)}}/>
+            <button type="submit" > Add Task </button>
         </form>
     </>
   )
 }
-
 export default TodoForm

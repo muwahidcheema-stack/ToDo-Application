@@ -25,13 +25,13 @@ function TodoItem({todo, onCompletion, onEdit, onDeletion}) {
             value={editText} 
             onChange={(e) => setEditText(e.target.value)}
           />
-          <button onClick={handleSave}>Save</button>
-          <button onClick={handleCancel}>Cancel</button>
+          <button onClick={handleSave}> Save </button>
+          <button onClick={handleCancel}> Cancel </button>
           
         </>
       ) : (
         <>
-          <button onClick={() => onCompletion(todo.id)}> Mark As Completed</button>
+          <button onClick={() => onCompletion(todo.id)}> Mark As Completed </button>
           <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}> 
             {todo.text} 
           </span>
@@ -40,9 +40,6 @@ function TodoItem({todo, onCompletion, onEdit, onDeletion}) {
         </>
       )}
     </li>
-    
-    
   )
 }
-
 export default TodoItem
