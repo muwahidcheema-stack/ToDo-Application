@@ -22,7 +22,23 @@
 *   **State Persistence:** HTML5 Web Storage API (`localStorage`)
 
 ---
+## Setup
+  * 1. Clone the Repository
+    ```text
+    git clone [https://github.com/muwahidcheema-stack/ToDo_application.git]
+    cd ToDo_application
+    ```
+  * 2. Install Dependencies
+    ```text
+    npm install
+    ```
 
+  * 3. Run Development Server
+    ```text
+    npm install
+    ```
+
+    
 ## 📂 Component Architecture
 
 The codebase is highly modular, separating state controllers from stateless presentational UI blocks:
@@ -38,6 +54,9 @@ src/
 │   └── TodoList.jsx       # Grid list mapper and empty-state controller
 ├── App.jsx                # Main orchestrator (Central State, Handlers, LocalStorage side-effects)
 └── main.jsx               # Entry point
+```
+Once started, open your browser and navigate to the address shown in your terminal (usually http://localhost:5173/)
 
-git clone [https://github.com/muwahidcheema-stack/ToDo_application.git]
-cd ToDo_application
+# Built with ❤️ by Muwahid Cheema
+
+
