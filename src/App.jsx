@@ -5,6 +5,7 @@ import TodoList from './components/TodoList'
 import TodoItem from './components/TodoItem'
 import FilterButtons from './components/FilterButtons'
 import Counter from './components/Counter'
+import SearchBar from './components/SearchBar'
 import './App.css'
 function App() {
   const [toDo, setTodo] = useState(() => {
@@ -22,6 +23,12 @@ function App() {
   };
   const filterKeys = Object.keys(filterMap)
   const filteredTasks = toDo.filter(filterMap[filter])
+  const [searchTerm, setSearchTerm] = useState("")
+  const searchedTasks = toDo.filter((task) => {
+    const matchedResults = task.text.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchedFilter = filterMap[filter](task)
+    return matchedResults && matchedFilter;
+  })
   const totalCount =  toDo.length
   const activeCount = toDo.filter((task) => !task.completed).length
   const completedCount = toDo.filter((task) => task.completed).length
@@ -46,29 +53,27 @@ function App() {
   const handleDeleteToDo = (id) => {
     setTodo((prev) => prev.filter((item) => item.id !== id))
   };
+  const handleClearCompletedToDo = () => {
+    setTodo((prev) => prev.filter((item) => !item.completed))
+  }
   return (
     <>
       <div>
         <h1>My To-Do Application</h1>
         <TodoForm onAddToDO={handleToDo}/>
-        {/* <div>
-          <h3>Total ToDos: {toDo.length}</h3>
-          <br />
-        </div> */}
       </div>
-      {/* <div>
-        <Counter count={toDo.length}></Counter>
-      </div> */}
-      <Counter total={totalCount} active={activeCount} completed={completedCount}></Counter>
+      <Counter total={totalCount} active={activeCount} completed={completedCount} OnHandleClearCompleted={handleClearCompletedToDo}></Counter>
       <div>
         {filterKeys.map((name) => {
           return <FilterButtons key={name} name={name} isPressed={name === filter} setFilter={setFilter}></FilterButtons>
         })}
       </div>
       <div>
-        <TodoList toDo={filteredTasks} onEdit={handleEditToDo} onCompletion={handleCompleteToDo} onDeletion={handleDeleteToDo}></TodoList>
+        <TodoList toDo={searchedTasks} onEdit={handleEditToDo} onCompletion={handleCompleteToDo} onDeletion={handleDeleteToDo}></TodoList>
       </div>
-      
+      <div>
+        <SearchBar searchText={searchTerm} setSearchText={setSearchTerm}></SearchBar>
+      </div>
     </>
   )
 }
