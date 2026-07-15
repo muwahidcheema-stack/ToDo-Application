@@ -37,7 +37,7 @@
     ```text
     npm install
     ```
-
+---
     
 ## 📂 Component Architecture
 
@@ -57,6 +57,7 @@ src/
 ```
 Once started, open your browser and navigate to the address shown in your terminal (usually http://localhost:5173/)
 
-# Built with ❤️ by Muwahid Cheema
+---
+Built with ❤️ by Muwahid Cheema
 
 
