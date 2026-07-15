@@ -25,7 +25,7 @@
 ## Setup
   * 1. Clone the Repository
     ```text
-    git clone [https://github.com/muwahidcheema-stack/ToDo_application.git]
+    git clone https://github.com/muwahidcheema-stack/ToDo_application.git
     cd ToDo_application
     ```
   * 2. Install Dependencies
@@ -35,7 +35,7 @@
 
   * 3. Run Development Server
     ```text
-    npm install
+    npm run dev
     ```
 ---
     
