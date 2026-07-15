@@ -15,6 +15,7 @@ function TodoForm({onAddToDO}) {
     <>
         <form onSubmit={handleSubmit}>
             <input 
+                id='input-form'
                 type="text" 
                 placeholder='Add a Task' 
                 value={input} 

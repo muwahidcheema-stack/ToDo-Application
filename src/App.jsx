@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useEffect } from 'react'
 import TodoForm from './components/TodoForm'
 import TodoList from './components/TodoList'
 import TodoItem from './components/TodoItem'
@@ -6,7 +7,13 @@ import FilterButtons from './components/FilterButtons'
 import Counter from './components/Counter'
 import './App.css'
 function App() {
-  const [toDo, setTodo] = useState([])
+  const [toDo, setTodo] = useState(() => {
+    const savedToDos = localStorage.getItem("myToDos")
+    return savedToDos ? JSON.parse(savedToDos) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem("myToDos" , JSON.stringify(toDo))
+  }, [toDo])
   const [filter, setFilter] = useState("All")
   const filterMap = {
     All: () => true,
@@ -25,6 +32,7 @@ function App() {
       completed: false,
     }
     setTodo((prev) => [...prev,task])
+    
   };
   const handleEditToDo = (id, newText) => {
     setTodo((prev) =>
