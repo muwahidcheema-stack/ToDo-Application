@@ -86,7 +86,7 @@ function Login() {
 
   return (
     <>
-      <div className='p-8 max-w-md mx-auto border-lg shadow-lg mt-10'>
+      {/* <div className='p-8 max-w-md mx-auto border-lg shadow-lg mt-10'>
 
         <h2 className='text-2xl font-bold mb-6 text-center'>
           {isSignUp ? "Create an Account" : "Log In" }
@@ -115,7 +115,7 @@ function Login() {
 
           <button
           type='submit'
-          className='bg-blue-500 hover:bg-blue-700 py-2 text-white rounded font-semibold flex flex-col items-center justify-center disabled:opacity-60 cursor-pointer '>
+          className='bg-[#524646] py-2 text-white rounded font-semibold flex flex-col items-center justify-center disabled:opacity-60 cursor-pointer '>
             {loading ? (
               <>
                 <svg
@@ -152,12 +152,95 @@ function Login() {
             setEmail('')
             setPassword('')
           }}
-          className='text-blue-400 underline font-medium hover:text-blue-700'
+          className='text-[#2c5745] underline font-medium hover:text-blue-700'
           >
             {isSignUp ? "Sign In" : "Sign Up"}
           </button>
         </p>
+      </div> */}
+
+      {/* p-8 max-w-md mx-auto border-lg shadow-lg mt-10 rounded-md */}
+
+      <div className='min-h-screen w-full bg-[#e0d4bb] flex items-center justify-center p-4'>
+        <div className='p-8 max-w-md w-full border-lg shadow-lg bg-white rounded-md'>
+
+          <h2 className='text-3xl font-bold mb-8 text-center text-black'>
+            {isSignUp ? "Signup" : "Login"}
+          </h2>
+
+          {message && <p className='text-sm text-red-500 mb-4'> {message} </p>}
+
+          <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+            <input
+              type="text"
+              placeholder='Email Address'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className='p-3 border border-gray-300 rounded focus:border-golden focus:ring-1 focus:ring-hover-button outline-none text-black'
+            />
+
+            <input
+              type="password"
+              placeholder={isSignUp ? 'Create a password' : 'Enter Password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className='p-3 border border-gray-300 rounded focus:border-golden focus:ring-1 focus:ring-hover-button outline-none text-black'
+            />
+
+            <button
+              type='submit'
+              className='bg-golden py-3 text-white rounded font-medium flex items-center justify-center disabled:opacity-60 cursor-pointer text-lg'
+            >
+              {loading ? (
+                <>
+                  <svg
+                    className='animate-spin h-5 w-5 text-white mr-3'
+                    xmlns='http://www.w3.org/2000/svg'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                  >
+                    <circle
+                      className='opacity-25'
+                      cx={12}
+                      cy={12}
+                      r={10}
+                      stroke='currentColor'
+                      strokeWidth={4}
+                    ></circle>
+                    <path
+                      className='opacity-75'
+                      fill='currentColor'
+                      d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                    ></path>
+                  </svg>
+                  <span>Processing ... </span>
+                </>
+              ) : isSignUp ? (
+                "Signup"
+              ) : (
+                "Login"
+              )}
+            </button>
+          </form>
+
+          <p className='mt-5 text-sm text-center text-black'>
+            {isSignUp ? "Already have an account? " : "Don't have an account? "}
+            <button
+              onClick={() => {
+                setIsSignUp(!isSignUp);
+                setEmail("");
+                setPassword("");
+              }}
+              className='text-golden hover:text-hover-button font-medium'
+            >
+              {isSignUp ? "Login" : "SignUp"}
+            </button>
+          </p>
+        </div>
       </div>
+      
     </>
   )
 }
